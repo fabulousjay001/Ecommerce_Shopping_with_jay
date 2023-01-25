@@ -102,7 +102,6 @@ const NameInput = styled.input`
   border: #f0f0f0 1px solid;
   border-radius: 4px; 
   outline: none;
-
   font-family: "DM Sans", sans-serif;
   ::placeholder{
     color:#CACACA;
@@ -169,15 +168,14 @@ const Signup = () => {
   const [upperValidation, setUpperValidation] = useState(false);
   const [numberValidation, setNumberValidation] = useState(false);
   const [symbolValidation, setSymbolValidation] = useState(false);
-  const [lengthValidation,setLengthValidation]=useState(false)
+  const [lengthValidation, setLengthValidation] = useState(false);
 
   const handleChange = (value) => {
     const upper = new RegExp("(?=.*[A-Z])");
     const number = new RegExp("(?=.*[0-9])");
     const symbol = new RegExp("(?=.*[!@#$%^&*])");
-    const length = new RegExp("(?=.{8,})")
+    const length = new RegExp("(?=.{8,})");
 
-  
     if (upper.test(value)) {
       setUpperValidation(true);
     } else {
@@ -269,23 +267,29 @@ const Signup = () => {
                 {validation.map((data) => {
                   return (
                     <ValidationContainer>
-                       <ValidationBox>
-                       <Icon>
-                        {upperValidation ? <IconFilled /> : data.icon}
-                      </Icon>
-                      <ValidationText>{data.upperCaseCheck}</ValidationText>
-                       </ValidationBox>
-                     
                       <ValidationBox>
-                        <Icon>{lengthValidation ? <IconFilled /> : data.icon}</Icon>
+                        <Icon>
+                          {upperValidation ? <IconFilled /> : data.icon}
+                        </Icon>
+                        <ValidationText>{data.upperCaseCheck}</ValidationText>
+                      </ValidationBox>
+
+                      <ValidationBox>
+                        <Icon>
+                          {lengthValidation ? <IconFilled /> : data.icon}
+                        </Icon>
                         <ValidationText>{data.characterCheck}</ValidationText>
                       </ValidationBox>
                       <ValidationBox>
-                        <Icon>{numberValidation ? <IconFilled/>:data.icon}</Icon>
+                        <Icon>
+                          {numberValidation ? <IconFilled /> : data.icon}
+                        </Icon>
                         <ValidationText>{data.numberCheck}</ValidationText>
                       </ValidationBox>
                       <ValidationBox>
-                        <Icon>{symbolValidation? <IconFilled/>:data.icon}</Icon>
+                        <Icon>
+                          {symbolValidation ? <IconFilled /> : data.icon}
+                        </Icon>
                         <ValidationText>{data.symbolcheck}</ValidationText>
                       </ValidationBox>
                     </ValidationContainer>

@@ -5,18 +5,24 @@ import styled from "styled-components";
 import { Customer, Info } from "./Data";
 
 const Container = styled.div`
-  background: #f0f0f0;
+  background: #12a9a9;
   display: flex;
-  width: 1440px;
   margin: auto;
+  color: white;
+  font-family: "inter";
 `;
 
 const Left = styled.div`
-  margin: 20px;
+  margin-left: 100px;
+  // padding-right:140px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
   flex: 1;
 `;
 const Center = styled.div`
-  flex: 1;
+  flex: 2;
   margin: 20px;
 `;
 // const Right = styled.div`
@@ -24,20 +30,27 @@ const Center = styled.div`
 // `;
 const Header = styled.div`
   font-weight: Bold;
-  margin: 20px;
+  margin-top: 64px;
+  margin-bottom: 32px;
   font-family: "inter";
+  font-weight: 700;
+  font-size:32px
 `;
 
 const Text = styled.div`
-  margin: 20px;
   font-family: "inter";
+  font-size: 16px;
+  margin-bottom: 24px;
+  margin-top:20px;
+  line-height: 24px;
+  font-weight:400
 `;
 
 const Footer = () => {
   return (
     <Container>
       <Left>
-        <Header>Fab Jay</Header>
+        <Header>Fab_jAY</Header>
         {Object.values(Info).map((data, index) => {
           return <Text key={index}>{data}</Text>;
         })}

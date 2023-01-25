@@ -1,13 +1,9 @@
 /** @format */
 import styled from "styled-components";
-import {
-  AiOutlineZoomIn,
-  AiOutlineZoomOut,
-  AiFillStar,
-  AiOutlinePlusSquare,
-  AiOutlineMinusSquare,
-} from "react-icons/ai";
-import { Data, sizes } from "./Data";
+import { useState } from "react";
+import { AiOutlineZoomIn, AiOutlineZoomOut, AiFillStar } from "react-icons/ai";
+import { CiSquareMinus, CiSquarePlus } from "react-icons/ci";
+import { Data, sizes, style } from "./Data";
 
 const Container = styled.div`
   display: flex;
@@ -18,10 +14,13 @@ const Container = styled.div`
   font-family: "inter";
 `;
 const ImageContainer = styled.div`
-  display: flex;
+  // display: flex;
 `;
 const Image = styled.img`
-  position: relative;
+  // position: relative;
+`;
+const ImgBox = styled.div`
+  // position: relative;
 `;
 const ZoomContainer = styled.div`
   background: #ffffff;
@@ -55,12 +54,20 @@ const Text = styled.p`
 const Ratings = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 25px;
+  // margin-top: 8px;
   justify-content: space-between;
   width: 220px;
 `;
 const Color = styled.div`
-  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+`;
+const FilterColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: ${(props) => props.color};
 `;
 const Size = styled.div``;
 const SizeButton = styled.button`
@@ -74,24 +81,50 @@ const SizeButton = styled.button`
   }
 `;
 const Quantity = styled.button`
-  padding: 8px;
+  padding: 4px;
   border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-around;
+  width: 80px;
+  height: 38px;
+  align-items: center;
 `;
 const Price = styled.span`
   font-weight: 500;
   font-size: 24px;
 `;
-const Button = styled.button``;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 185px;
+  margin-top: 32px;
+`;
+const Button = styled.button`
+  display: flex;
+  background: white;
+  padding: 12px;
+  border: solid 1px #12a9a9;
+  color: #12a9a9;
+  border-radius: 10px;
+  :hover& {
+    background: #12a9a9;
+    color: white;
+  }
+`;
 
 const ProductDetails = () => {
+  const [hover, setHover] = useState(false);
   return (
     <Container>
       <ImageContainer>
-        <Image src='/image.png' />
-        <ZoomContainer>
-          <AiOutlineZoomIn size={20} color={"#12A9A9"} />
-          <AiOutlineZoomOut size={20} color={"#12A9A9"} />
-        </ZoomContainer>
+        <ImgBox>
+          <Image src='https://www.armani.com/variants/images/20346390236454272/D/w480.jpg' />
+          <ZoomContainer>
+            <AiOutlineZoomIn size={20} color={"#12A9A9"} />
+            <AiOutlineZoomOut size={20} color={"#12A9A9"} />
+          </ZoomContainer>
+        </ImgBox>
       </ImageContainer>
 
       <InfoContainer>
@@ -102,7 +135,13 @@ const ProductDetails = () => {
           <Text>11k</Text>
           <Text>Reviews 4k+ sold</Text>
         </Ratings>
-        <Text>Color:</Text> <Color>Black</Color>
+        <Text>Color:</Text>{" "}
+        <Color>
+          <FilterColor color='white' />
+          <FilterColor color='black' />
+          <FilterColor color='gray' />
+          <FilterColor color='blue' />
+        </Color>
         <Text>Select size: </Text>
         <Size>
           {sizes.map((data) => (
@@ -111,14 +150,27 @@ const ProductDetails = () => {
         </Size>
         <Text>Quantity: </Text>{" "}
         <Quantity>
-          <AiOutlinePlusSquare size={20} />
-
-          <AiOutlineMinusSquare size={20} />
+          <CiSquareMinus size={20} style={{ color: "#12A9A9" }} />
+          <CiSquarePlus
+            size={20}
+            onMouseEnter={() => {
+              setHover(true);
+            }}
+            onMouseLeave={() => {
+              setHover(false);
+            }}
+            style={{
+              ...style.normal,
+              ...(hover ? style.hover : null),
+            }}
+          />
         </Quantity>
         <Text>Price:</Text>
-        <Price>14$</Price>
-        <Button>Buy Now</Button>
-        <Button>Add to Cart</Button>
+        <Price>$14</Price>
+        <ButtonContainer>
+          <Button>Buy Now</Button>
+          <Button>Add to Cart</Button>
+        </ButtonContainer>
       </InfoContainer>
     </Container>
   );

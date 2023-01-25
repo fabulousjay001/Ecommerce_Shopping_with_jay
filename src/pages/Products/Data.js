@@ -28,5 +28,23 @@ export const sort = [
 export const Data =
   "The Topman revere sheer shirt in gold zigzag burnout that has been wore all through the years. The design itself transcends time and has been touted to be times.";
 
-
+export const style = {
+  normal: {
+    color: "#12A9A9",
+    background: "",
+  },
+  hover: {
+    color: "#12A9A9",
   
+  },
+};
+
+export const Button = {
+  normal: {
+    color: "#12A9A9",
+    background: "",
+  },
+  hover: {
+    color: "#12A9A9",
+  },
+};
