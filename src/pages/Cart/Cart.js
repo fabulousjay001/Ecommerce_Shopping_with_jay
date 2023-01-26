@@ -70,7 +70,8 @@ const Button = styled.button`
   width: 100%;
   padding: 10px;
   background-color: #12a9a9;
-  border:none;color:white
+  border: none;
+  color: white;
 `;
 const Product = styled.div`
   display: flex;
@@ -108,10 +109,7 @@ const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
 `;
-const Underline = styled.hr`
-//   background: red;
-//   height: 1;
-`;
+const Underline = styled.hr``;
 const ProductAmount = styled.div`
   font-size: 24px;
 `;
